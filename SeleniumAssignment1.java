@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class SeleniumAssignment1 {
     public static void main(String args[]){
         System.setProperty("webdriver.chrome.driver","/Users/cchoudhary/Downloads/chromedriver_mac64/chromedriver");
@@ -26,7 +28,13 @@ public class SeleniumAssignment1 {
         //Open dropdown and select electronicoption
         WebElement drpdwn=driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
         drpdwn.click();
+
         Select drp =new Select(drpdwn);
+        //To print all the categories on the console
+        List<WebElement> listdrpdwn=drp.getOptions();
+        for(WebElement e: listdrpdwn){
+            System.out.println(e.getText());
+        }
         drp.selectByValue("search-alias=electronics");
 
         //submit the electronic option
